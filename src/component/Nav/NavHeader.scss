@@ -1,0 +1,24 @@
+.menu-container {
+
+    .header-menu {
+        background-color: #fafafa !important;
+        display: flex;
+
+        .title-menu {
+            display: flex;
+            align-items: center;
+
+            h4 {
+                text-transform: uppercase;
+            }
+
+            .icon-admin {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .menu {
+        min-height: 100vh;
+    }
+}

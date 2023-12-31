@@ -1,0 +1,21 @@
+.header-infor-container {
+    display: flex;
+    align-items: center;
+
+    .header-infor-user-infor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+
+        .user-text {
+            font-size: 17px;
+            font-weight: 400;
+            margin-right: 5px;
+        }
+    }
+
+    .header-infor-logout {
+        margin-left: 10px;
+    }
+}

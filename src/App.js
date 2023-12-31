@@ -1,24 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import NavHeader from './component/Nav/NavHeader';
+import { Menu, Layout, Button, Row, Col } from 'antd';
+import "./App.scss"
+import AppRoute from './component/routes/AppRoute';
+import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { Content, Header } from 'antd/es/layout/layout';
+import HeaderInfor from './component/Nav/HeaderInfor';
+
+
+
+const { Sider } = Layout;
 
 function App() {
+  const dataredux = useSelector((state) => state.userisaccess)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {
+        dataredux && dataredux.isAuthenticated ?
+          <Layout>
+            <Sider className='menu-backgroup'>
+              <NavHeader />
+            </Sider>
+            <Layout>
+              <Header className='header-bacground'>
+                <HeaderInfor />
+              </Header>
+              <Content>
+                <AppRoute />
+              </Content>
+            </Layout>
+          </Layout>
+          :
+          <AppRoute />
+
+      }
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
+    </BrowserRouter>
   );
 }
 
